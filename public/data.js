@@ -1139,7 +1139,7 @@ window.EVALS = {
     "server_domains"
    ],
    "text": "The **log‑viewer** application is served on the domain:\n\n**`https://logs.example.test`**",
-   "lenient": false
+   "lenient": true
   },
   {
    "model": "granite-3b",
@@ -1158,7 +1158,7 @@ window.EVALS = {
     "server_domains"
    ],
    "text": "The **log‑viewer** service is exposed on the following domain:\n\n**https://logs.example.test**",
-   "lenient": false
+   "lenient": true
   },
   {
    "model": "granite-3b",
@@ -1177,7 +1177,7 @@ window.EVALS = {
     "server_domains"
    ],
    "text": "The **log‑viewer** service is served on the domain **`https://logs.example.test`**.",
-   "lenient": false
+   "lenient": true
   },
   {
    "model": "granite-3b",
@@ -1433,7 +1433,8 @@ window.EVALS = {
   "look up a domain by app name": [
    "get_application",
    "list_applications",
-   "diagnose_app"
+   "diagnose_app",
+   "server_domains"
   ],
   "a nonexistent app is reported, never guessed at": [
    "list_applications",

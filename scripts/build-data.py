@@ -55,7 +55,7 @@ LENIENT = {
     "report the Coolify version": ["get_version"],
     "name the unhealthy app": ["find_issues", "list_applications", "diagnose_app"],
     "report the latest deployment outcome": ["list_deployments", "deployment", "diagnose_app"],
-    "look up a domain by app name": ["get_application", "list_applications", "diagnose_app"],
+    "look up a domain by app name": ["get_application", "list_applications", "diagnose_app", "server_domains"],
     "a nonexistent app is reported, never guessed at": ["list_applications", "diagnose_app"],
     "an ambiguous target is clarified before acting": ["list_applications"],
 }

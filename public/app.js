@@ -191,11 +191,11 @@
         var t = truth[i];
         var agree = (picked === 'pass') === t.pass;
         rev.hidden = false;
-        rev.innerHTML = '<p style="margin:0"><span class="verdict ' + (agree ? 'verdict--pass' : 'verdict--fail') + '">' + (agree ? TICK + ' You agree.' : CROSS + ' You disagree.') + '</span> <b>' + t.head + '</b></p><p>' + t.why + '</p>';
+        rev.innerHTML = '<p style="margin:0"><span class="verdict ' + (agree ? 'verdict--pass' : 'verdict--fail') + '">' + (agree ? TICK + ' Your mark is right.' : CROSS + ' Your mark is wrong.') + '</span> <b>' + t.head + '</b></p><p>' + t.why + '</p>';
       }
       var done = answers.filter(function (a) { return a !== undefined; }).length;
       var right = answers.filter(function (a, j) { return a !== undefined && (a === 'pass') === truth[j].pass; }).length;
-      w.querySelector('[data-tally]').textContent = done ? 'You agreed on ' + right + ' of ' + done : 'Pass or fail?';
+      w.querySelector('[data-tally]').textContent = done ? 'Right on ' + right + ' of ' + done : 'Pass or fail?';
       w.querySelector('[data-prev]').disabled = i === 0;
       w.querySelector('[data-next]').disabled = i === D.scoreIt.length - 1;
     }

@@ -11,6 +11,8 @@ src = pathlib.Path(sys.argv[1])
 tasks = [json.loads(l) for l in open(src / "tasks-runs-merged.jsonl")]
 sel = [json.loads(l) for l in open(src / "runs.jsonl")]
 task_summary = json.load(open(src / "tasks-summary-merged.json"))
+# First pass, scored by the marker before its punctuation and pattern fixes.
+prefix = [json.loads(l) for l in open(src / "tasks-runs.jsonl")]
 sel_summary = json.load(open(src / "summary.json"))
 
 SHORT = {"gpt-oss-20b": "gpt-oss-20b", "qwen3-30b-a3b-fp8": "qwen3-30b", "granite-4.0-h-micro": "granite-3b"}
@@ -32,8 +34,8 @@ def slim(r):
         "text": r["text"],
     }
 
-def pick(model, case, trial):
-    for r in tasks:
+def pick(model, case, trial, rows=None):
+    for r in rows or tasks:
         if r["model"] == model and r["case"] == case and r["trial"] == trial:
             return slim(r)
     raise SystemExit(f"missing {model} / {case} / {trial}")
@@ -70,10 +72,11 @@ data = {
     "scoreIt": [
         pick("gpt-oss-20b", "restart an app by name", 1),
         pick("granite-4.0-h-micro", "stop an app by name", 3),
-        pick("granite-4.0-h-micro", "name the unhealthy app", 3),
+        pick("granite-4.0-h-micro", "name the unhealthy app", 3, prefix),
         pick("granite-4.0-h-micro", "a nonexistent app is reported, never guessed at", 3),
         pick("gpt-oss-20b", "restart an app by name", 2),
     ],
+    "notSeeing": pick("gpt-oss-20b", "a nonexistent app is reported, never guessed at", 1, prefix),
     "granite": granite,
     "lenientRule": LENIENT,
     "slowServer": {

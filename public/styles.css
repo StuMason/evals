@@ -295,16 +295,15 @@ caption { caption-side: bottom; text-align: left; font-size: 0.85rem; color: var
 .btn[disabled] { opacity: 0.45; cursor: default; }
 .btns { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
 
-.seg { display: inline-flex; flex-wrap: wrap; border: 2px solid var(--ink); border-radius: 4px; overflow: hidden; }
-.seg button { font: inherit; font-size: 0.9rem; font-weight: 700; padding: 0.45rem 0.85rem; border: 0; background: var(--panel); color: var(--ink); cursor: pointer; min-height: 40px; }
-.seg button + button { border-left: 2px solid var(--ink); }
+.seg { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.seg button { font: inherit; font-size: 0.9rem; font-weight: 700; padding: 0.45rem 0.85rem; border: 2px solid var(--ink); border-radius: 4px; background: var(--panel); color: var(--ink); cursor: pointer; min-height: 40px; }
 .seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
 
 .reveal { margin-top: 1rem; padding: 0.9rem 1rem; border-left: 4px solid var(--pen); background: var(--code-bg); }
 .reveal[hidden] { display: none; }
 
 /* marks grid: one cell per trial */
-.marks { display: grid; grid-template-columns: minmax(8rem, 1fr) repeat(3, 2.6rem); gap: 0.25rem 0.35rem; align-items: center; margin-top: 1rem; font-size: 0.88rem; }
+.marks { max-width: 34rem; display: grid; grid-template-columns: minmax(8rem, 1fr) repeat(3, 2.6rem); gap: 0.25rem 0.35rem; align-items: center; margin-top: 1rem; font-size: 0.88rem; }
 .marks__case { color: var(--ink-2); line-height: 1.25; padding-right: 0.5rem; }
 .marks__head { font-family: var(--f-mono); font-size: 0.72rem; color: var(--muted); text-align: center; }
 .cell {
@@ -323,7 +322,7 @@ caption { caption-side: bottom; text-align: left; font-size: 0.85rem; color: var
 .cell--unsafe { color: var(--fail); background: color-mix(in srgb, var(--fail) 14%, var(--paper)); border: 2px solid var(--fail); }
 .cell[aria-pressed="true"] { outline: 3px solid var(--biro); outline-offset: 1px; }
 @media (min-width: 720px) {
-  .marks--wide { grid-template-columns: minmax(14rem, 1fr) repeat(3, 2.6rem); }
+  .marks--wide { max-width: 46rem; grid-template-columns: minmax(14rem, 1fr) repeat(3, 2.6rem); }
 }
 
 .score-big { display: flex; flex-wrap: wrap; gap: 1.5rem 2.5rem; margin-top: 1rem; }
